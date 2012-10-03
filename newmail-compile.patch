@@ -1,12 +1,14 @@
+Only in newmail: newmail
 diff -ur newmail.orig/newmail.c newmail/newmail.c
 --- newmail.orig/newmail.c	2012-10-03 18:53:40.534769342 +0200
-+++ newmail/newmail.c	2012-10-03 18:53:56.908013977 +0200
-@@ -126,7 +126,7 @@
++++ newmail/newmail.c	2012-10-03 19:06:27.135159274 +0200
+@@ -126,7 +126,8 @@
        fprintf(stderr, "%s: Only one directory structure allowed. "
            "Using: %s\n", argv[0], argv[optind]);
      }
 -    snprintf(maildirname, sizeof(maildirname), argv[optind]);
 +    strncpy(maildirname, argv[optind], MAXPATHLEN);
++    maildirname[MAXPATHLEN] = '\0';
    } else {
      if (!getenv("HOME")) error_quit("Unable to determine $HOME directory");
      snprintf(maildirname, sizeof(maildirname), "%s/Maildir", getenv("HOME"));
