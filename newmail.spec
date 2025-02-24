@@ -18,7 +18,7 @@ stuff—like, for example, in combination with Mutt—too.
 
 %prep
 %setup -q -n newmail
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__cc} %{rpmcflags} newmail.c -o newmail %{rpmldflags}
